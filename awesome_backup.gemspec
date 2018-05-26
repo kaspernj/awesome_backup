@@ -9,14 +9,17 @@ Gem::Specification.new do |s|
   s.version     = AwesomeBackup::VERSION
   s.authors     = ["kaspernj"]
   s.email       = ["kaspernj@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of AwesomeBackup."
-  s.description = "TODO: Description of AwesomeBackup."
+  s.homepage    = "https://github.com/kaspernj/awesome_backup"
+  s.summary     = "Make backups of your stuff in a simple way."
+  s.description = "Make backups of your stuff in a simple way."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails", "~> 5.1.6"
+  s.add_dependency "rails", "~> 5.2.0"
+  s.add_dependency "service_pattern", ">= 0.0.3"
 
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "factory_bot_rails"
+  s.add_development_dependency "pg"
+  s.add_development_dependency "rspec-rails"
 end
