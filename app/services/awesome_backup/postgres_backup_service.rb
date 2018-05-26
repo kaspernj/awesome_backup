@@ -2,8 +2,6 @@ class AwesomeBackup::PostgresBackupService < AwesomeBackup::ApplicationService
   def execute!
     `#{pg_dump_command} > \"#{tempfile_path}\"`
 
-    size = File.size(tempfile_path)
-
     backup = AwesomeBackup::PostgresBackup.create!
     backup.file.attach(
       io: File.open(tempfile_path),
@@ -21,9 +19,9 @@ private
 
   def pg_dump_command
     command = "pg_dump --format=c"
-    command << " -U \"#{database_config.fetch("username")}\"" if database_config["username"].present?
-    command << " \"--host=#{database_config.fetch("host")}\"" if database_config["host"].present?
-    command << " \"--port=#{database_config.fetch("port")}\"" if database_config["port"].present?
+    command << pg_dump_username_argument.to_s
+    command << pg_dump_host_argument.to_s
+    command << pg_dump_port_argument.to_s
 
     if database_config["password"].present?
       command << " \"--password=#{database_config.fetch("password")}\""
@@ -33,6 +31,18 @@ private
 
     command << " \"#{database_config.fetch("database")}\""
     command
+  end
+
+  def pg_dump_host_argument
+    " \"--host=#{database_config.fetch("host")}\"" if database_config["host"].present?
+  end
+
+  def pg_dump_port_argument
+    " \"--port=#{database_config.fetch("port")}\"" if database_config["port"].present?
+  end
+
+  def pg_dump_username_argument
+    " -U \"#{database_config.fetch("username")}\"" if database_config["username"].present?
   end
 
   def tempfile_path

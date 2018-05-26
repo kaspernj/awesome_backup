@@ -1,4 +1,4 @@
-$:.push File.expand_path("../lib", __FILE__)
+$LOAD_PATH.push File.expand_path("lib", __dir__)
 
 # Maintain your gem's version:
 require "awesome_backup/version"
@@ -19,8 +19,10 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 5.2.0"
   s.add_dependency "service_pattern", ">= 0.0.3"
 
+  s.add_development_dependency "best_practice_project"
   s.add_development_dependency "factory_bot_rails"
   s.add_development_dependency "pg"
   s.add_development_dependency "pry-rails"
   s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "rubocop"
 end

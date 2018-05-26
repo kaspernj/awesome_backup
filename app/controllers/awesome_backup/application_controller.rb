@@ -1,5 +1,3 @@
-module AwesomeBackup
-  class ApplicationController < ActionController::Base
-    protect_from_forgery with: :exception
-  end
+class AwesomeBackup::ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
 end

@@ -1,4 +1,2 @@
-module AwesomeBackup
-  class ApplicationJob < ActiveJob::Base
-  end
+class AwesomeBackup::ApplicationJob < ActiveJob::Base
 end

@@ -1,5 +1,3 @@
-module AwesomeBackup
-  class Engine < ::Rails::Engine
-    isolate_namespace AwesomeBackup
-  end
+class AwesomeBackup::Engine < ::Rails::Engine
+  isolate_namespace AwesomeBackup
 end

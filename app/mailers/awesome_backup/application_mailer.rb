@@ -1,6 +1,4 @@
-module AwesomeBackup
-  class ApplicationMailer < ActionMailer::Base
-    default from: 'from@example.com'
-    layout 'mailer'
-  end
+class AwesomeBackup::ApplicationMailer < ActionMailer::Base
+  default from: "from@example.com"
+  layout "mailer"
 end

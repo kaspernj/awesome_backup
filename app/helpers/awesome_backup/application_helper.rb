@@ -1,4 +1,2 @@
-module AwesomeBackup
-  module ApplicationHelper
-  end
+module AwesomeBackup::ApplicationHelper
 end

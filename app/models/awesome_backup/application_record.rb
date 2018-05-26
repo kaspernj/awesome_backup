@@ -1,5 +1,3 @@
-module AwesomeBackup
-  class ApplicationRecord < ActiveRecord::Base
-    self.abstract_class = true
-  end
+class AwesomeBackup::ApplicationRecord < ActiveRecord::Base
+  self.abstract_class = true
 end
