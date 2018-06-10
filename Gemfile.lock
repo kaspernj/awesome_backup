@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    awesome_backup (0.1.0)
-      rails (~> 5.2.0)
+    awesome_backup (0.0.0)
+      rails (>= 5.2.0)
       service_pattern (>= 0.0.3)
 
 GEM
@@ -180,4 +180,4 @@ DEPENDENCIES
   rubocop
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
