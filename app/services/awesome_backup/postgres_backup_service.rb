@@ -1,7 +1,9 @@
+require "English"
+
 class AwesomeBackup::PostgresBackupService < AwesomeBackup::ApplicationService
   def execute
     result = `#{pg_dump_command} > \"#{tempfile_path}\"`
-    raise "Command failed: #{result}" unless $?.exitstatus == 0
+    raise "Command failed: #{result}" unless $CHILD_STATUS.exitstatus.zero?
 
     backup = AwesomeBackup::PostgresBackup.create!
     backup.file.attach(
