@@ -1,6 +1,7 @@
 class AwesomeBackup::PostgresBackupService < AwesomeBackup::ApplicationService
-  def execute!
-    `#{pg_dump_command} > \"#{tempfile_path}\"`
+  def execute
+    result = `#{pg_dump_command} > \"#{tempfile_path}\"`
+    raise "Command failed: #{result}" unless $?.exitstatus == 0
 
     backup = AwesomeBackup::PostgresBackup.create!
     backup.file.attach(
@@ -24,7 +25,7 @@ private
     command << pg_dump_port_argument.to_s
 
     if database_config["password"].present?
-      command << " \"--password=#{database_config.fetch("password")}\""
+      command.prepend("PGPASSWORD=\"#{database_config.fetch("password")}\" ")
     else
       command << " --no-password"
     end
