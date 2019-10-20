@@ -51,10 +51,6 @@ GEM
       tzinfo (~> 1.1)
     arel (9.0.0)
     ast (2.4.0)
-    auto_autoloader (0.0.5)
-      string-cases
-    best_practice_project (0.0.10)
-      auto_autoloader (>= 0.0.5)
     builder (3.2.3)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
@@ -157,7 +153,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    string-cases (0.0.4)
     thor (0.20.0)
     thread_safe (0.3.6)
     tzinfo (1.2.5)
@@ -174,7 +169,6 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_backup!
-  best_practice_project
   factory_bot_rails
   pg
   pry-rails
