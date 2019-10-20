@@ -1,3 +1,6 @@
+before_script:
+  - cp spec/dummy/config/database.peakflow.yml spec/dummy/config/database.yml
+  - bundle exec rails db:create db:schema:load
 script:
-  - bundle exec rake best_practice_project:run
   - bundle exec rspec
+  - bundle exec rubocop
