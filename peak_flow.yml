@@ -1,3 +1,5 @@
+before_script:
+  - cp spec/dummy/config/database.peakflow.yml spec/dummy/config/database.yml
 script:
   - bundle exec rspec
   - bundle exec rubocop
