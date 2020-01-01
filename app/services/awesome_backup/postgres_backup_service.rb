@@ -11,7 +11,7 @@ class AwesomeBackup::PostgresBackupService < AwesomeBackup::ApplicationService
       filename: "database.dump"
     )
 
-    ServicePattern::Response.new(result: {backup: backup})
+    succeed!(backup: backup)
   end
 
 private
