@@ -7,6 +7,11 @@ AllCops:
     - node_modules/**/*
     - spec/dummy/db/schema.rb
 
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
 
@@ -18,6 +23,9 @@ Layout/EmptyLinesAroundArguments:
 
 Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
+
+Layout/LineLength:
+  Max: 160
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
@@ -43,14 +51,17 @@ Metrics/ClassLength:
 Metrics/CyclomaticComplexity:
   Max: 10
 
-Metrics/LineLength:
-  Max: 160
-
 Metrics/MethodLength:
   Max: 50
 
 # .find_each is not the same as .each
 Rails/FindEach:
+  Enabled: false
+
+RSpec/DescribedClass:
+  Enabled: false
+
+RSpec/MultipleExpectations:
   Enabled: false
 
 Style/ClassAndModuleChildren:
