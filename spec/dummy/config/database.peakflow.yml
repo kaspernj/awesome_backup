@@ -8,7 +8,7 @@ test:
   adapter: postgresql
   database: peakflow_test
   host: postgres
-  username: nemoa
+  username: peakflow
   password: password
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
