@@ -1,6 +1,7 @@
 before_script:
   - cp spec/dummy/config/database.peakflow.yml spec/dummy/config/database.yml
   - bundle exec rails db:create db:schema:load
+rvm: true
 script:
   - bundle exec rspec
   - bundle exec rubocop
