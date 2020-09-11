@@ -2,19 +2,23 @@ require "English"
 
 class AwesomeBackup::PostgresBackupService < AwesomeBackup::ApplicationService
   def execute
-    result = `#{pg_dump_command} > \"#{tempfile_path}\"`
-    raise "Command failed: #{result}" unless $CHILD_STATUS.exitstatus.zero?
-
-    backup = AwesomeBackup::PostgresBackup.create!
-    backup.file.attach(
-      io: File.open(tempfile_path),
-      filename: "database.dump"
-    )
-
+    run_command("#{pg_dump_command} > \"#{tempfile_path}\"")
+    attach_file
     succeed!(backup: backup)
   end
 
 private
+
+  def attach_file
+    backup.file.attach(
+      io: File.open(tempfile_path),
+      filename: "database.dump"
+    )
+  end
+
+  def backup
+    @backup ||= AwesomeBackup::PostgresBackup.create!
+  end
 
   def database_config
     @database_config ||= Rails.configuration.database_configuration.fetch(Rails.env)
@@ -46,6 +50,13 @@ private
 
   def pg_dump_username_argument
     " -U \"#{database_config.fetch("username")}\"" if database_config["username"].present?
+  end
+
+  def run_command(command)
+    result = `#{command}`
+    raise "Command failed: #{result}" unless $CHILD_STATUS.exitstatus.zero?
+
+    result
   end
 
   def tempfile_path
