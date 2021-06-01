@@ -1,7 +1,7 @@
 require "English"
 
 class AwesomeBackup::PostgresBackupService < AwesomeBackup::ApplicationService
-  def execute
+  def perform
     run_command("#{pg_dump_command} > \"#{tempfile_path}\"")
     attach_file
     succeed!(backup: backup)
