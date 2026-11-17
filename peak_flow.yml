@@ -1,6 +1,13 @@
 before_script:
   - cp spec/dummy/config/database.peakflow.yml spec/dummy/config/database.yml
   - bundle exec rails db:create db:schema:load
+# This repository has one build lane, so filter the lane at the root. Keep
+# application, dependency, and CI configuration changes broad; only
+# documentation-only changes are intentionally excluded.
+paths:
+  - "**/*"
+  - "!**/*.md"
+  - "!docs/**"
 rvm: true
 services:
   postgres:

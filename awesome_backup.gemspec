@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary = "Make backups of your stuff in a simple way."
   s.description = "Make backups of your stuff in a simple way."
   s.license = "MIT"
-  s.required_ruby_version = ">= 2.5"
+  s.required_ruby_version = ">= 3.0"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
