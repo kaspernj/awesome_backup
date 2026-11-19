@@ -1,6 +1,8 @@
 # AwesomeBackup
 Short description and motivation.
 
+Build notes live with the project configuration.
+
 ## Usage
 How to use my plugin.
 
